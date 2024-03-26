@@ -2,8 +2,8 @@ FROM node:21-alpine
 
 ENV KUBE_LATEST_VERSION="v1.24.17" \
     KUBE_RUNNING_VERSION="v1.24.17" \
-    HELM_VERSION="v3.14.3" \
-    AWSCLI="1.24"
+    HELM_VERSION="v3.14.3"
+    #AWSCLI="1.24"
 
 ENV HELM_TAR_FILE="helm-${HELM_VERSION}-linux-amd64.tar.gz" \
     HELM_URL="https://get.helm.sh" \
@@ -27,6 +27,7 @@ RUN apk --update --no-cache add \
 ENV PIP_BREAK_SYSTEM_PACKAGES=1
 
 RUN pip3 install --upgrade pip
+#RUN pip3 install --no-cache requests awscli==${AWSCLI}
 RUN pip3 install --no-cache requests awscli==${AWSCLI}
 
 # Install kubectl
