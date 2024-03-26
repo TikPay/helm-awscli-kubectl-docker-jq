@@ -1,16 +1,9 @@
 FROM node:21-alpine
-#FROM alpine:3.9
-
-#COPY --from=node /usr/lib /usr/lib
-#COPY --from=node /usr/local/share /usr/local/share
-#COPY --from=node /usr/local/lib /usr/local/lib
-#COPY --from=node /usr/local/include /usr/local/include
-#COPY --from=node /usr/local/bin /usr/local/bin
 
 ENV KUBE_LATEST_VERSION="v1.24.17" \
     KUBE_RUNNING_VERSION="v1.24.17" \
     HELM_VERSION="v3.14.3"
-    #AWSCLI="1.24.10"
+    AWSCLI="1.24.10"
 
 ENV HELM_TAR_FILE="helm-${HELM_VERSION}-linux-amd64.tar.gz" \
     HELM_URL="https://get.helm.sh" \
@@ -34,8 +27,7 @@ RUN apk --update --no-cache add \
 ENV PIP_BREAK_SYSTEM_PACKAGES=1
 
 RUN pip3 install --upgrade pip
-RUN pip3 install --no-cache requests awscli
-#RUN pip3 install requests awscli==${AWSCLI}
+RUN pip3 install --no-cache requests awscli==${AWSCLI}
 
 # Install kubectl
 RUN curl -L https://storage.googleapis.com/kubernetes-release/release/${KUBE_RUNNING_VERSION}/bin/linux/amd64/kubectl -o /usr/local/bin/kubectl && \
