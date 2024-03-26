@@ -28,7 +28,7 @@ ENV PIP_BREAK_SYSTEM_PACKAGES=1
 
 RUN pip3 install --upgrade pip
 #RUN pip3 install --no-cache requests awscli==${AWSCLI}
-RUN pip3 install --no-cache requests awscli==${AWSCLI}
+RUN pip3 install --no-cache requests awscli
 
 # Install kubectl
 RUN curl -L https://storage.googleapis.com/kubernetes-release/release/${KUBE_RUNNING_VERSION}/bin/linux/amd64/kubectl -o /usr/local/bin/kubectl && \
